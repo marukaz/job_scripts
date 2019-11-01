@@ -1,0 +1,233 @@
+| NOTE: you may get better performance with: --ddp-backend=no_c10d
+| distributed init (rank 2): tcp://localhost:12235
+| distributed init (rank 1): tcp://localhost:12235
+| distributed init (rank 0): tcp://localhost:12235
+| distributed init (rank 3): tcp://localhost:12235
+| initialized host r7i6n1 as rank 3
+| initialized host r7i6n1 as rank 2
+| initialized host r7i6n1 as rank 1
+| initialized host r7i6n1 as rank 0
+Namespace(activation_fn='relu', adam_betas='(0.9, 0.98)', adam_eps=1e-08, adaptive_input=False, adaptive_input_cutoff=None, adaptive_input_factor=4, adaptive_softmax_cutoff=None, adaptive_softmax_dropout=0, adaptive_softmax_factor=4, add_bos_token=False, arch='transformer_lm', attention_dropout=0.0, best_checkpoint_metric='loss', bpe=None, bucket_cap_mb=25, char_embedder_highway_layers=2, character_embedding_dim=4, character_embeddings=False, character_filters='[(1, 64), (2, 128), (3, 192), (4, 256), (5, 256), (6, 256), (7, 256)]', clip_norm=0.0, cpu=False, criterion='label_smoothed_cross_entropy', curriculum=0, data='/gs/hs0/tga-nlp-titech/matsumaru/data/jnc_fairseq_3snt_only_target_bin/', dataset_impl=None, ddp_backend='c10d', decoder_attention_heads=8, decoder_embed_dim=512, decoder_ffn_embed_dim=2048, decoder_input_dim=512, decoder_layers=6, decoder_learned_pos=False, decoder_normalize_before=True, decoder_output_dim=512, device_id=0, disable_validation=False, distributed_backend='nccl', distributed_init_method='tcp://localhost:12235', distributed_no_spawn=False, distributed_port=-1, distributed_rank=0, distributed_world_size=4, dropout=0.1, find_unused_parameters=False, fix_batches_to_gpus=False, fp16=False, fp16_init_scale=128, fp16_scale_tolerance=0.0, fp16_scale_window=None, future_target=False, keep_interval_updates=-1, keep_last_epochs=-1, label_smoothing=0.1, lazy_load=False, log_format=None, log_interval=1000, lr=[0.0005], lr_scheduler='inverse_sqrt', max_epoch=50, max_sentences=None, max_sentences_valid=None, max_target_positions=None, max_tokens=3584, max_tokens_valid=3584, max_update=0, maximize_best_checkpoint_metric=False, memory_efficient_fp16=False, min_loss_scale=0.0001, min_lr=1e-09, no_decoder_final_norm=False, no_epoch_checkpoints=True, no_last_checkpoints=False, no_progress_bar=False, no_save=False, no_save_optimizer_state=False, no_token_positional_embeddings=False, num_workers=1, optimizer='adam', optimizer_overrides='{}', output_dictionary_size=-1, past_target=False, raw_text=False, required_batch_size_multiple=8, reset_dataloader=False, reset_lr_scheduler=False, reset_meters=False, reset_optimizer=False, restore_file='checkpoint_last.pt', sample_break_mode='none', save_dir='/gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm', save_interval=1, save_interval_updates=0, seed=1, self_target=False, sentence_avg=False, share_decoder_input_output_embed=False, skip_invalid_size_inputs_valid_test=False, task='language_modeling', tbmf_wrapper=False, tensorboard_logdir='', threshold_loss_scale=None, tie_adaptive_proj=False, tie_adaptive_weights=False, tokenizer=None, tokens_per_sample=1024, train_subset='train', update_freq=[16], use_bmuf=False, user_dir=None, valid_subset='valid', validate_interval=1, warmup_init_lr=1e-07, warmup_updates=4000, weight_decay=0.0)
+| dictionary: 17824 types
+| loaded 3000 examples from: /gs/hs0/tga-nlp-titech/matsumaru/data/jnc_fairseq_3snt_only_target_bin/valid
+TransformerLanguageModel(
+  (decoder): TransformerDecoder(
+    (embed_tokens): Embedding(17824, 512, padding_idx=1)
+    (embed_positions): SinusoidalPositionalEmbedding()
+    (layers): ModuleList(
+      (0): TransformerDecoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=512, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=512, bias=True)
+        (final_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      )
+      (1): TransformerDecoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=512, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=512, bias=True)
+        (final_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      )
+      (2): TransformerDecoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=512, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=512, bias=True)
+        (final_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      )
+      (3): TransformerDecoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=512, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=512, bias=True)
+        (final_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      )
+      (4): TransformerDecoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=512, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=512, bias=True)
+        (final_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      )
+      (5): TransformerDecoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=512, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=512, bias=True)
+        (final_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+  )
+)
+| model transformer_lm, criterion LabelSmoothedCrossEntropyCriterion
+| num. model params: 37167104 (num. trained: 37167104)
+| training on 4 GPUs
+| max tokens per GPU = 3584 and max sentences per GPU = None
+| no existing checkpoint found /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_last.pt
+| loading train data for epoch 0
+| loaded 1825812 examples from: /gs/hs0/tga-nlp-titech/matsumaru/data/jnc_fairseq_3snt_only_target_bin/train
+| epoch 001 | loss 12.879 | nll_loss 12.646 | ppl 6410.07 | wps 100340 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 142 | lr 1.78465e-05 | gnorm 1.888 | clip 0.000 | oom 0.000 | wall 294 | train_wall 268
+| epoch 001 | valid on 'valid' subset | loss 11.560 | nll_loss 11.164 | ppl 2295.33 | num_updates 142
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 1 @ 142 updates) (writing took 0.9655201435089111 seconds)
+| epoch 002 | loss 11.093 | nll_loss 10.645 | ppl 1601.76 | wps 100387 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 284 | lr 3.55929e-05 | gnorm 0.281 | clip 0.000 | oom 0.000 | wall 587 | train_wall 536
+| epoch 002 | valid on 'valid' subset | loss 10.653 | nll_loss 10.129 | ppl 1119.56 | num_updates 284 | best_loss 10.6529
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 2 @ 284 updates) (writing took 1.3281757831573486 seconds)
+| epoch 003 | loss 10.434 | nll_loss 9.863 | ppl 931.44 | wps 100455 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 426 | lr 5.33394e-05 | gnorm 0.130 | clip 0.000 | oom 0.000 | wall 885 | train_wall 804
+| epoch 003 | valid on 'valid' subset | loss 10.180 | nll_loss 9.558 | ppl 753.62 | num_updates 426 | best_loss 10.1803
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 3 @ 426 updates) (writing took 1.280505657196045 seconds)
+| epoch 004 | loss 10.031 | nll_loss 9.382 | ppl 667.18 | wps 100337 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 568 | lr 7.10858e-05 | gnorm 0.181 | clip 0.000 | oom 0.000 | wall 1184 | train_wall 1072
+| epoch 004 | valid on 'valid' subset | loss 9.793 | nll_loss 9.100 | ppl 548.84 | num_updates 568 | best_loss 9.79333
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 4 @ 568 updates) (writing took 1.2588832378387451 seconds)
+| epoch 005 | loss 9.682 | nll_loss 8.968 | ppl 500.92 | wps 100184 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 710 | lr 8.88323e-05 | gnorm 0.197 | clip 0.000 | oom 0.000 | wall 1476 | train_wall 1340
+| epoch 005 | valid on 'valid' subset | loss 9.480 | nll_loss 8.721 | ppl 422.05 | num_updates 710 | best_loss 9.4798
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 5 @ 710 updates) (writing took 1.3389003276824951 seconds)
+| epoch 006 | loss 9.412 | nll_loss 8.649 | ppl 401.37 | wps 100473 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 852 | lr 0.000106579 | gnorm 0.319 | clip 0.000 | oom 0.000 | wall 1767 | train_wall 1608
+| epoch 006 | valid on 'valid' subset | loss 9.269 | nll_loss 8.478 | ppl 356.45 | num_updates 852 | best_loss 9.26933
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 6 @ 852 updates) (writing took 1.2914788722991943 seconds)
+| epoch 007 | loss 9.198 | nll_loss 8.397 | ppl 337.06 | wps 100514 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 994 | lr 0.000124325 | gnorm 0.348 | clip 0.000 | oom 0.000 | wall 2061 | train_wall 1875
+| epoch 007 | valid on 'valid' subset | loss 9.060 | nll_loss 8.220 | ppl 298.17 | num_updates 994 | best_loss 9.06007
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 7 @ 994 updates) (writing took 1.3040988445281982 seconds)
+| epoch 008 | loss 9.022 | nll_loss 8.190 | ppl 292.06 | wps 100453 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 1136 | lr 0.000142072 | gnorm 0.318 | clip 0.000 | oom 0.000 | wall 2345 | train_wall 2143
+| epoch 008 | valid on 'valid' subset | loss 8.906 | nll_loss 8.039 | ppl 263.10 | num_updates 1136 | best_loss 8.90602
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 8 @ 1136 updates) (writing took 1.3597593307495117 seconds)
+| epoch 009 | loss 8.874 | nll_loss 8.018 | ppl 259.14 | wps 100426 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 1278 | lr 0.000159818 | gnorm 0.324 | clip 0.000 | oom 0.000 | wall 2641 | train_wall 2411
+| epoch 009 | valid on 'valid' subset | loss 8.778 | nll_loss 7.890 | ppl 237.20 | num_updates 1278 | best_loss 8.77831
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 9 @ 1278 updates) (writing took 1.3176493644714355 seconds)
+| epoch 010 | loss 8.748 | nll_loss 7.869 | ppl 233.86 | wps 100519 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 1420 | lr 0.000177565 | gnorm 0.343 | clip 0.000 | oom 0.000 | wall 2931 | train_wall 2679
+| epoch 010 | valid on 'valid' subset | loss 8.658 | nll_loss 7.752 | ppl 215.56 | num_updates 1420 | best_loss 8.65821
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 10 @ 1420 updates) (writing took 1.2984950542449951 seconds)
+| epoch 011 | loss 8.620 | nll_loss 7.719 | ppl 210.68 | wps 100515 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 1562 | lr 0.000195311 | gnorm 0.417 | clip 0.000 | oom 0.000 | wall 3224 | train_wall 2947
+| epoch 011 | valid on 'valid' subset | loss 8.504 | nll_loss 7.569 | ppl 189.86 | num_updates 1562 | best_loss 8.5043
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 11 @ 1562 updates) (writing took 1.2734997272491455 seconds)
+| epoch 012 | loss 8.447 | nll_loss 7.515 | ppl 182.90 | wps 100493 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 1704 | lr 0.000213057 | gnorm 0.397 | clip 0.000 | oom 0.000 | wall 3508 | train_wall 3215
+| epoch 012 | valid on 'valid' subset | loss 8.323 | nll_loss 7.344 | ppl 162.52 | num_updates 1704 | best_loss 8.32286
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 12 @ 1704 updates) (writing took 1.29978609085083 seconds)
+| epoch 013 | loss 8.286 | nll_loss 7.323 | ppl 160.16 | wps 100395 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 1846 | lr 0.000230804 | gnorm 0.421 | clip 0.000 | oom 0.000 | wall 3800 | train_wall 3483
+| epoch 013 | valid on 'valid' subset | loss 8.188 | nll_loss 7.198 | ppl 146.83 | num_updates 1846 | best_loss 8.18835
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 13 @ 1846 updates) (writing took 1.373401403427124 seconds)
+| epoch 014 | loss 8.153 | nll_loss 7.165 | ppl 143.52 | wps 100490 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 1988 | lr 0.00024855 | gnorm 0.405 | clip 0.000 | oom 0.000 | wall 4094 | train_wall 3751
+| epoch 014 | valid on 'valid' subset | loss 8.063 | nll_loss 7.038 | ppl 131.40 | num_updates 1988 | best_loss 8.06318
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 14 @ 1988 updates) (writing took 1.3230876922607422 seconds)
+| epoch 015 | loss 8.036 | nll_loss 7.027 | ppl 130.46 | wps 100361 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 2130 | lr 0.000266297 | gnorm 0.395 | clip 0.000 | oom 0.000 | wall 4385 | train_wall 4019
+| epoch 015 | valid on 'valid' subset | loss 7.962 | nll_loss 6.919 | ppl 120.99 | num_updates 2130 | best_loss 7.9623
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 15 @ 2130 updates) (writing took 1.2929294109344482 seconds)
+| epoch 016 | loss 7.933 | nll_loss 6.907 | ppl 120.01 | wps 100457 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 2272 | lr 0.000284043 | gnorm 0.390 | clip 0.000 | oom 0.000 | wall 4669 | train_wall 4286
+| epoch 016 | valid on 'valid' subset | loss 7.873 | nll_loss 6.811 | ppl 112.31 | num_updates 2272 | best_loss 7.87275
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 16 @ 2272 updates) (writing took 1.2764999866485596 seconds)
+| epoch 017 | loss 7.842 | nll_loss 6.801 | ppl 111.48 | wps 100445 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 2414 | lr 0.00030179 | gnorm 0.375 | clip 0.000 | oom 0.000 | wall 4960 | train_wall 4554
+| epoch 017 | valid on 'valid' subset | loss 7.796 | nll_loss 6.724 | ppl 105.68 | num_updates 2414 | best_loss 7.79599
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 17 @ 2414 updates) (writing took 2.0245230197906494 seconds)
+| epoch 018 | loss 7.758 | nll_loss 6.703 | ppl 104.17 | wps 100412 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 2556 | lr 0.000319536 | gnorm 0.361 | clip 0.000 | oom 0.000 | wall 5256 | train_wall 4823
+| epoch 018 | valid on 'valid' subset | loss 7.730 | nll_loss 6.641 | ppl 99.77 | num_updates 2556 | best_loss 7.73023
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 18 @ 2556 updates) (writing took 1.7740957736968994 seconds)
+| epoch 019 | loss 7.683 | nll_loss 6.616 | ppl 98.05 | wps 100433 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 2698 | lr 0.000337283 | gnorm 0.374 | clip 0.000 | oom 0.000 | wall 5548 | train_wall 5091
+| epoch 019 | valid on 'valid' subset | loss 7.659 | nll_loss 6.561 | ppl 94.41 | num_updates 2698 | best_loss 7.65876
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 19 @ 2698 updates) (writing took 1.356909990310669 seconds)
+| epoch 020 | loss 7.611 | nll_loss 6.533 | ppl 92.61 | wps 100417 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 2840 | lr 0.000355029 | gnorm 0.350 | clip 0.000 | oom 0.000 | wall 5841 | train_wall 5359
+| epoch 020 | valid on 'valid' subset | loss 7.605 | nll_loss 6.497 | ppl 90.35 | num_updates 2840 | best_loss 7.60489
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 20 @ 2840 updates) (writing took 1.4442594051361084 seconds)
+| epoch 021 | loss 7.548 | nll_loss 6.460 | ppl 88.05 | wps 100465 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 2982 | lr 0.000372775 | gnorm 0.351 | clip 0.000 | oom 0.000 | wall 6133 | train_wall 5626
+| epoch 021 | valid on 'valid' subset | loss 7.546 | nll_loss 6.434 | ppl 86.49 | num_updates 2982 | best_loss 7.5457
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 21 @ 2982 updates) (writing took 1.5172803401947021 seconds)
+| epoch 022 | loss 7.488 | nll_loss 6.391 | ppl 83.90 | wps 100366 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 3124 | lr 0.000390522 | gnorm 0.344 | clip 0.000 | oom 0.000 | wall 6425 | train_wall 5894
+| epoch 022 | valid on 'valid' subset | loss 7.500 | nll_loss 6.378 | ppl 83.18 | num_updates 3124 | best_loss 7.49997
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 22 @ 3124 updates) (writing took 1.390965223312378 seconds)
+| epoch 023 | loss 7.433 | nll_loss 6.327 | ppl 80.27 | wps 100529 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 3266 | lr 0.000408268 | gnorm 0.341 | clip 0.000 | oom 0.000 | wall 6711 | train_wall 6162
+| epoch 023 | valid on 'valid' subset | loss 7.453 | nll_loss 6.320 | ppl 79.91 | num_updates 3266 | best_loss 7.45341
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 23 @ 3266 updates) (writing took 1.8208622932434082 seconds)
+| epoch 024 | loss 7.381 | nll_loss 6.266 | ppl 76.97 | wps 100566 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 3408 | lr 0.000426015 | gnorm 0.336 | clip 0.000 | oom 0.000 | wall 7000 | train_wall 6430
+| epoch 024 | valid on 'valid' subset | loss 7.415 | nll_loss 6.281 | ppl 77.74 | num_updates 3408 | best_loss 7.41477
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 24 @ 3408 updates) (writing took 1.8410978317260742 seconds)
+| epoch 025 | loss 7.332 | nll_loss 6.211 | ppl 74.06 | wps 100510 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 3550 | lr 0.000443761 | gnorm 0.325 | clip 0.000 | oom 0.000 | wall 7286 | train_wall 6698
+| epoch 025 | valid on 'valid' subset | loss 7.380 | nll_loss 6.235 | ppl 75.34 | num_updates 3550 | best_loss 7.3796
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 25 @ 3550 updates) (writing took 1.3531198501586914 seconds)
+| epoch 026 | loss 7.287 | nll_loss 6.158 | ppl 71.39 | wps 100197 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 3692 | lr 0.000461508 | gnorm 0.322 | clip 0.000 | oom 0.000 | wall 7578 | train_wall 6966
+| epoch 026 | valid on 'valid' subset | loss 7.351 | nll_loss 6.198 | ppl 73.43 | num_updates 3692 | best_loss 7.35053
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 26 @ 3692 updates) (writing took 1.5467791557312012 seconds)
+| epoch 027 | loss 7.244 | nll_loss 6.109 | ppl 69.01 | wps 100392 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 3834 | lr 0.000479254 | gnorm 0.319 | clip 0.000 | oom 0.000 | wall 7871 | train_wall 7234
+| epoch 027 | valid on 'valid' subset | loss 7.316 | nll_loss 6.166 | ppl 71.82 | num_updates 3834 | best_loss 7.31635
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 27 @ 3834 updates) (writing took 1.412987232208252 seconds)
+| epoch 028 | loss 7.205 | nll_loss 6.063 | ppl 66.87 | wps 100575 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 3976 | lr 0.000497001 | gnorm 0.321 | clip 0.000 | oom 0.000 | wall 8163 | train_wall 7501
+| epoch 028 | valid on 'valid' subset | loss 7.299 | nll_loss 6.131 | ppl 70.07 | num_updates 3976 | best_loss 7.29921
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 28 @ 3976 updates) (writing took 1.8977551460266113 seconds)
+| epoch 029 | loss 7.166 | nll_loss 6.018 | ppl 64.82 | wps 100560 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 4118 | lr 0.000492784 | gnorm 0.307 | clip 0.000 | oom 0.000 | wall 8457 | train_wall 7769
+| epoch 029 | valid on 'valid' subset | loss 7.266 | nll_loss 6.105 | ppl 68.84 | num_updates 4118 | best_loss 7.26627
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 29 @ 4118 updates) (writing took 1.8091824054718018 seconds)
+| epoch 030 | loss 7.128 | nll_loss 5.974 | ppl 62.87 | wps 100533 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 4260 | lr 0.000484502 | gnorm 0.302 | clip 0.000 | oom 0.000 | wall 8754 | train_wall 8037
+| epoch 030 | valid on 'valid' subset | loss 7.243 | nll_loss 6.074 | ppl 67.39 | num_updates 4260 | best_loss 7.24263
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 30 @ 4260 updates) (writing took 1.3854634761810303 seconds)
+| epoch 031 | loss 7.092 | nll_loss 5.932 | ppl 61.07 | wps 100615 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 4402 | lr 0.000476623 | gnorm 0.291 | clip 0.000 | oom 0.000 | wall 9043 | train_wall 8304
+| epoch 031 | valid on 'valid' subset | loss 7.225 | nll_loss 6.056 | ppl 66.53 | num_updates 4402 | best_loss 7.22546
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 31 @ 4402 updates) (writing took 1.673412799835205 seconds)
+| epoch 032 | loss 7.060 | nll_loss 5.894 | ppl 59.49 | wps 100565 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 4544 | lr 0.000469117 | gnorm 0.285 | clip 0.000 | oom 0.000 | wall 9334 | train_wall 8572
+| epoch 032 | valid on 'valid' subset | loss 7.205 | nll_loss 6.036 | ppl 65.61 | num_updates 4544 | best_loss 7.20543
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 32 @ 4544 updates) (writing took 1.4024457931518555 seconds)
+| epoch 033 | loss 7.030 | nll_loss 5.860 | ppl 58.08 | wps 100529 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 4686 | lr 0.000461954 | gnorm 0.293 | clip 0.000 | oom 0.000 | wall 9629 | train_wall 8839
+| epoch 033 | valid on 'valid' subset | loss 7.188 | nll_loss 6.010 | ppl 64.44 | num_updates 4686 | best_loss 7.18764
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 33 @ 4686 updates) (writing took 1.3200793266296387 seconds)
+| epoch 034 | loss 7.002 | nll_loss 5.826 | ppl 56.74 | wps 100545 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 4828 | lr 0.00045511 | gnorm 0.277 | clip 0.000 | oom 0.000 | wall 9917 | train_wall 9107
+| epoch 034 | valid on 'valid' subset | loss 7.168 | nll_loss 5.995 | ppl 63.76 | num_updates 4828 | best_loss 7.16768
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 34 @ 4828 updates) (writing took 1.542407512664795 seconds)
+| epoch 035 | loss 6.975 | nll_loss 5.796 | ppl 55.54 | wps 100497 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 4970 | lr 0.000448561 | gnorm 0.276 | clip 0.000 | oom 0.000 | wall 10212 | train_wall 9375
+| epoch 035 | valid on 'valid' subset | loss 7.159 | nll_loss 5.977 | ppl 63.00 | num_updates 4970 | best_loss 7.15854
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 35 @ 4970 updates) (writing took 1.8188543319702148 seconds)
+| epoch 036 | loss 6.951 | nll_loss 5.767 | ppl 54.44 | wps 100388 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 5112 | lr 0.000442287 | gnorm 0.273 | clip 0.000 | oom 0.000 | wall 10504 | train_wall 9643
+| epoch 036 | valid on 'valid' subset | loss 7.153 | nll_loss 5.965 | ppl 62.47 | num_updates 5112 | best_loss 7.15332
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 36 @ 5112 updates) (writing took 1.4902079105377197 seconds)
+| epoch 037 | loss 6.928 | nll_loss 5.740 | ppl 53.44 | wps 100274 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 5254 | lr 0.00043627 | gnorm 0.271 | clip 0.000 | oom 0.000 | wall 10795 | train_wall 9911
+| epoch 037 | valid on 'valid' subset | loss 7.140 | nll_loss 5.953 | ppl 61.94 | num_updates 5254 | best_loss 7.13971
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 37 @ 5254 updates) (writing took 1.8581762313842773 seconds)
+| epoch 038 | loss 6.906 | nll_loss 5.714 | ppl 52.49 | wps 100491 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 5396 | lr 0.000430491 | gnorm 0.272 | clip 0.000 | oom 0.000 | wall 11085 | train_wall 10179
+| epoch 038 | valid on 'valid' subset | loss 7.124 | nll_loss 5.935 | ppl 61.17 | num_updates 5396 | best_loss 7.12367
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 38 @ 5396 updates) (writing took 1.462480068206787 seconds)
+| epoch 039 | loss 6.886 | nll_loss 5.690 | ppl 51.64 | wps 100616 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 5538 | lr 0.000424936 | gnorm 0.270 | clip 0.000 | oom 0.000 | wall 11379 | train_wall 10446
+| epoch 039 | valid on 'valid' subset | loss 7.117 | nll_loss 5.924 | ppl 60.73 | num_updates 5538 | best_loss 7.11747
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 39 @ 5538 updates) (writing took 1.6571197509765625 seconds)
+| epoch 040 | loss 6.867 | nll_loss 5.668 | ppl 50.84 | wps 100681 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 5680 | lr 0.000419591 | gnorm 0.266 | clip 0.000 | oom 0.000 | wall 11678 | train_wall 10713
+| epoch 040 | valid on 'valid' subset | loss 7.109 | nll_loss 5.911 | ppl 60.16 | num_updates 5680 | best_loss 7.10859
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 40 @ 5680 updates) (writing took 1.4149360656738281 seconds)
+| epoch 041 | loss 6.848 | nll_loss 5.646 | ppl 50.09 | wps 100580 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 5822 | lr 0.000414442 | gnorm 0.275 | clip 0.000 | oom 0.000 | wall 11970 | train_wall 10981
+| epoch 041 | valid on 'valid' subset | loss 7.107 | nll_loss 5.909 | ppl 60.10 | num_updates 5822 | best_loss 7.10651
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 41 @ 5822 updates) (writing took 1.865330696105957 seconds)
+| epoch 042 | loss 6.831 | nll_loss 5.625 | ppl 49.37 | wps 100701 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 5964 | lr 0.000409479 | gnorm 0.265 | clip 0.000 | oom 0.000 | wall 12261 | train_wall 11248
+| epoch 042 | valid on 'valid' subset | loss 7.103 | nll_loss 5.906 | ppl 59.96 | num_updates 5964 | best_loss 7.10274
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 42 @ 5964 updates) (writing took 1.4852890968322754 seconds)
+| epoch 043 | loss 6.814 | nll_loss 5.606 | ppl 48.71 | wps 100550 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 6106 | lr 0.000404689 | gnorm 0.268 | clip 0.000 | oom 0.000 | wall 12550 | train_wall 11516
+| epoch 043 | valid on 'valid' subset | loss 7.100 | nll_loss 5.901 | ppl 59.74 | num_updates 6106 | best_loss 7.10006
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 43 @ 6106 updates) (writing took 1.6586835384368896 seconds)
+| epoch 044 | loss 6.799 | nll_loss 5.587 | ppl 48.08 | wps 100583 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 6248 | lr 0.000400064 | gnorm 0.269 | clip 0.000 | oom 0.000 | wall 12838 | train_wall 11783
+| epoch 044 | valid on 'valid' subset | loss 7.094 | nll_loss 5.888 | ppl 59.23 | num_updates 6248 | best_loss 7.09424
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 44 @ 6248 updates) (writing took 1.3422839641571045 seconds)
+| epoch 045 | loss 6.784 | nll_loss 5.570 | ppl 47.51 | wps 100476 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 6390 | lr 0.000395594 | gnorm 0.267 | clip 0.000 | oom 0.000 | wall 13131 | train_wall 12051
+| epoch 045 | valid on 'valid' subset | loss 7.090 | nll_loss 5.888 | ppl 59.24 | num_updates 6390 | best_loss 7.08977
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 45 @ 6390 updates) (writing took 1.462613821029663 seconds)
+| epoch 046 | loss 6.770 | nll_loss 5.553 | ppl 46.95 | wps 100597 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 6532 | lr 0.00039127 | gnorm 0.264 | clip 0.000 | oom 0.000 | wall 13423 | train_wall 12318
+| epoch 046 | valid on 'valid' subset | loss 7.086 | nll_loss 5.881 | ppl 58.91 | num_updates 6532 | best_loss 7.08578
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 46 @ 6532 updates) (writing took 1.7136907577514648 seconds)
+| epoch 047 | loss 6.757 | nll_loss 5.538 | ppl 46.45 | wps 100540 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 6674 | lr 0.000387085 | gnorm 0.268 | clip 0.000 | oom 0.000 | wall 13712 | train_wall 12586
+| epoch 047 | valid on 'valid' subset | loss 7.077 | nll_loss 5.873 | ppl 58.61 | num_updates 6674 | best_loss 7.07653
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 47 @ 6674 updates) (writing took 1.3992137908935547 seconds)
+| epoch 048 | loss 6.743 | nll_loss 5.521 | ppl 45.93 | wps 100457 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 6816 | lr 0.000383032 | gnorm 0.265 | clip 0.000 | oom 0.000 | wall 14002 | train_wall 12853
+| epoch 048 | valid on 'valid' subset | loss 7.077 | nll_loss 5.870 | ppl 58.49 | num_updates 6816 | best_loss 7.07653
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_last.pt (epoch 48 @ 6816 updates) (writing took 0.7745411396026611 seconds)
+| epoch 049 | loss 6.731 | nll_loss 5.507 | ppl 45.46 | wps 100715 | ups 1 | wpb 195829.923 | bsz 191.246 | num_updates 6958 | lr 0.000379103 | gnorm 0.265 | clip 0.000 | oom 0.000 | wall 14283 | train_wall 13121
+| epoch 049 | valid on 'valid' subset | loss 7.074 | nll_loss 5.866 | ppl 58.31 | num_updates 6958 | best_loss 7.0735
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_best.pt (epoch 49 @ 6958 updates) (writing took 1.5370278358459473 seconds)
+| epoch 050 | loss 6.719 | nll_loss 5.493 | ppl 45.02 | wps 100417 | ups 0 | wpb 195829.923 | bsz 191.246 | num_updates 7100 | lr 0.000375293 | gnorm 0.268 | clip 0.000 | oom 0.000 | wall 14577 | train_wall 13389
+| epoch 050 | valid on 'valid' subset | loss 7.080 | nll_loss 5.870 | ppl 58.50 | num_updates 7100 | best_loss 7.0735
+| saved checkpoint /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/jnc_fairseq_3snt_only_target_lm/checkpoint_last.pt (epoch 50 @ 7100 updates) (writing took 0.7217252254486084 seconds)
+| done training in 14587.0 seconds
