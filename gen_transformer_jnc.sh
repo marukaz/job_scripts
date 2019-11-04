@@ -6,8 +6,6 @@
 #$ -N gen
 #$ -m abe
 #$ -M kopamaru@gmail.com
-#$ -o o.gen
-#$ -e e.gen
 
 ## Initialize module command (don't remove)
 . /etc/profile.d/modules.sh
@@ -18,8 +16,8 @@ module load cudnn/7.3
 source ~/venvs/fairseq/bin/activate
 
 beam=5; subset="test"; \
-data='jnc_fairseq_3snt'
-fairseq-generate /gs/hs0/tga-nlp-titech/matsumaru/data/${data}_bin/ \
+data=$1; \
+fairseq-generate /gs/hs0/tga-nlp-titech/matsumaru/data/jnc/${data}_bin/ \
 --path /gs/hs0/tga-nlp-titech/matsumaru/exp/jnc/$data/checkpoint_best.pt \
 --gen-subset $subset \
 --batch-size 64 \

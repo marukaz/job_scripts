@@ -15,8 +15,8 @@ module load cudnn/7.3
 
 source ~/venvs/fairseq/bin/activate
 
-data='jnc_fairseq_3snt'
-fairseq-train /gs/hs0/tga-nlp-titech/matsumaru/data/${data}_bin/ \
+data=$1
+fairseq-train /gs/hs0/tga-nlp-titech/matsumaru/data/jnc/${data}_bin/ \
 --arch transformer_wmt_en_de \
 --max-epoch 30 \
 --lr 0.0005 --min-lr 1e-09 \
