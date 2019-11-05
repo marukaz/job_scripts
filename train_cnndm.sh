@@ -2,7 +2,7 @@
 ## current working directory
 #$ -cwd
 #$ -l h_rt=24:00:00
-#$ -N train_giga
+#$ -N train_cnndm
 #$ -m abe
 #$ -M kopamaru@gmail.com
 
@@ -32,4 +32,4 @@ fairseq-train ~/groupdisk/data/${data}_bin/ \
 --lr-scheduler inverse_sqrt --warmup-init-lr 1e-07 --warmup-updates 4000 \
 --criterion label_smoothed_cross_entropy --label-smoothing 0.1 \
 --save-interval 5 \
---save-dir ~/my_dir/exp/giga/${data}_1105
+--save-dir ~/my_dir/exp/cnndm/$data
