@@ -32,4 +32,5 @@ fairseq-train ~/groupdisk/data/${data}_bin/ \
 --lr-scheduler inverse_sqrt --warmup-init-lr 1e-07 --warmup-updates 4000 \
 --criterion label_smoothed_cross_entropy --label-smoothing 0.1 \
 --save-interval 5 \
+--skip-invalid-size-inputs-valid-test \
 --save-dir ~/my_dir/exp/cnndm/$data
