@@ -1,7 +1,7 @@
 #!/bin/sh
 ## current working directory
 #$ -cwd
-#$ -l h_rt=24:00:00
+#$ -l h_rt=48:00:00
 #$ -N train_giga
 #$ -m abe
 #$ -M kopamaru@gmail.com
@@ -19,7 +19,7 @@ fi
 
 source ~/my_dir/venvs/fairseq/bin/activate
 data=$1;
-fairseq-train ~/groupdisk/data/${data}_bin/ \
+fairseq-train ~/my_dir/data/giga/${data}_bin/ \
 --arch transformer_wmt_en_de_big_t2t \
 --seed 516 \
 --max-epoch 100 \
