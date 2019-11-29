@@ -26,10 +26,11 @@ export PYTHONPATH="$PYTHONPATH:/fs1/groups1/gcb50243/matsumaru/repos/unilm/src"
 cd src
 
 # run fine-tuning
-DATA_DIR=~/my_dir/data/giga/giga_1snt_1000_test_rep
-OUTPUT_DIR=~/my_dir/exp/unilm/giga_1snt_1000_test_rep
+DATA_DIR=~/my_dir/data/giga/filtered_roberta_wp
+OUTPUT_DIR=~/my_dir/exp/unilm/filtered_roberta_wp
+mkdir -p $OUTPUT_DIR
 MODEL_RECOVER_PATH=~/my_dir/exp/unilm/unilmv1-large-cased.bin
-export PYTORCH_PRETRAINED_BERT_CACHE=~/my_dir/exp/unilm/giga_1snt_1000_test_re/pbert-cased-pretrained-cache
+export PYTORCH_PRETRAINED_BERT_CACHE=~/my_dir/exp/unilm/filtered_roberta_wp/bert-cased-pretrained-cache
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 python biunilm/run_seq2seq.py --do_train --fp16 --amp --num_workers 0 \
   --bert_model bert-large-cased --new_segment_ids --tokenized_input \

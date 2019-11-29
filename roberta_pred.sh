@@ -20,4 +20,4 @@ module load python
 
 # run fine-tuning
 export CUDA_VISIBLE_DEVICES=0,1,2,3
-python predict.py --model-dir checkpoints/roberta.large.mnli --data-dir ~/my_dir/data/giga/giga_1snt_1000_test_rep_no_wp
+python predict.py --model-dir checkpoints/roberta.large.mnli --data-dir ~/my_dir/data/giga/giga_1snt_1000_test_rep_no_wp --batch-size 16

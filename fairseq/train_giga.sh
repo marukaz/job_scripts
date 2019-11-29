@@ -14,12 +14,16 @@ if [ `whoami` = 'acb11164rn' ]; then
   module load python
 fi
 
+module load cuda/10.1
+module load cudnn/7.6
+module load nccl/2.4
+
 source ~/my_dir/venvs/fairseq/bin/activate
 data=$1;
 fairseq-train ~/my_dir/data/giga/${data}_bin/ \
 --arch transformer_wmt_en_de \
 --seed 516 \
---max-epoch 100 \
+--max-epoch 50 \
 --lr 0.0005 --min-lr 1e-09 \
 --optimizer adam --adam-betas '(0.9, 0.98)' \
 --update-freq 4 \
