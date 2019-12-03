@@ -19,4 +19,5 @@ fairseq-interactive ~/my_dir/data/giga/${DATA}_bin \
 --path ~/my_dir/exp/giga/$DATA/checkpoint_best.pt \
 --beam $beam \
 --remove-bpe " ##" --buffer-size 64 \
---input ~/my_dir/data/giga/giga_1snt_small_test_wp/test.src > ~/my_dir/exp/giga/$DATA/gen_test10k.txt
+--input ~/my_dir/data/giga/entail_wp.src > ~/my_dir/exp/giga/$DATA/gen_entail.txt
+
