@@ -20,4 +20,4 @@ module load python
 
 # run fine-tuning
 export CUDA_VISIBLE_DEVICES=0,1,2,3
-python predict.py --model-dir checkpoints/roberta.large.mnli --data-dir ~/my_dir/data/giga/1snt_tail10ktest/gen --split gen --batch-size 16
+python predict.py --model-dir checkpoints/roberta.large.mnli --data-dir ~/my_dir/exp/giga/self_train_tfm_wp/gen --split gen --batch-size 16
