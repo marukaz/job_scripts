@@ -1,7 +1,7 @@
 #!/bin/sh
 ## current working directory
 #$ -cwd
-#$ -l h_rt=72:00:00
+#$ -l h_rt=02:00:00
 #$ -N gen_unilm
 #$ -m abe
 #$ -M kopamaru@gmail.com
@@ -28,12 +28,12 @@ cd src
 # run decoding
 MODEL_DIR=$1
 MODEL_NUM=$2
-DATA_DIR=~/my_dir/data/giga/filtered_roberta_wp
-MODEL_RECOVER_PATH=~/my_dir/exp/unilm/filtered_roberta_wp/bert_save/model.8.bin
+DATA_DIR=~/my_dir/data/giga/unlabeled_from_roberta
+# MODEL_RECOVER_PATH=~/my_dir/exp/unilm/filtered_roberta_wp/bert_save/model.10.bin
 export PYTORCH_PRETRAINED_BERT_CACHE=~/my_dir/exp/unilm/filtered_roberta_wp/bert-cased-pretrained-cache
-EVAL_SPLIT=test
+EVAL_SPLIT=$3
 python biunilm/decode_seq2seq.py --fp16 --amp --bert_model bert-large-cased --new_segment_ids --mode s2s --need_score_traces \
-  --input_file ${DATA_DIR}/${EVAL_SPLIT}.src --split ${EVAL_SPLIT} --tokenized_input \
+  --input_file ${DATA_DIR}/${EVAL_SPLIT} --split ${EVAL_SPLIT} --tokenized_input \
   --model_recover_path ~/my_dir/exp/unilm/$MODEL_DIR/bert_save/model.${MODEL_NUM}.bin \
   --max_seq_length 192 --max_tgt_length 32 \
   --batch_size 64 --beam_size 5 --length_penalty 0 \
